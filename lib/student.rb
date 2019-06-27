@@ -14,6 +14,7 @@ class Student
   def self.create_table
     sql =  <<-SQL 
       CREATE TABLE IF NOT EXISTS students (
+        id INTEGER PRIMARY KEY,
         name TEXT,
         grade TEXT
         )
@@ -29,7 +30,7 @@ class Student
     DB[:conn].execute(sql)
   end
 
-  def self.create(name:, grade:)
+  def self.create(name: name, grade: grade)
     student = Student.new(name, grade)
     student.save
     student
